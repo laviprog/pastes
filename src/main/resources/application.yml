@@ -1,0 +1,38 @@
+spring:
+
+  application:
+    name: pastes
+
+  datasource:
+    url: jdbc:postgresql://localhost:${PORT_DB}/${NAME_DB}
+    username: ${USERNAME_DB}
+    password: ${PASSWORD_DB}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  token:
+    singing:
+      key: ${TOKEN_SINGING_KEY}
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+
+aws:
+  service-endpoint: ${SERVICE_ENDPOINT}
+  access-key-id: ${ACCESS_KEY_ID}
+  secret-access-key: ${SECRET_ACCESS_KEY}
+  region: ${REGION}
+  bucket-default: ${BUCKET-DEFAULT}
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
