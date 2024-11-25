@@ -7,7 +7,7 @@ The server part of the project is presented in this repository. This is a REST A
 using:
 
 * `Java 21`
-* `Spring 3`
+* `Spring`
 * `PostgreSQL`
 * `S3`
 * `Docker`
