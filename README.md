@@ -7,13 +7,13 @@ The server part of the project is presented in this repository. This is a REST A
 using:
 
 * `Java 21`
-* `Spring 3`
+* `Spring`
 * `PostgreSQL`
 * `S3`
 * `Docker`
 * `OpenAPI`
 
----
+<img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 ## Contents
 
