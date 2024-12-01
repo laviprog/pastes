@@ -35,7 +35,7 @@ public class PasteService {
         return repository.findTopPastes(end - start, start - 1);
     }
 
-    public Paste getPasteById(Long id, User user) {
+    public Paste getPasteById(Long id, User user) throws ResourceNotFoundException {
 
         Paste paste = repository.findById(id).orElse(null);
 
@@ -56,7 +56,7 @@ public class PasteService {
 
     }
 
-    public Paste getPasteByAuthorAndTitle(String author, String title, User user) {
+    public Paste getPasteByAuthorAndTitle(String author, String title, User user) throws ResourceNotFoundException {
 
         Paste paste = repository.findPasteByAuthorAndTitle(author, title).orElse(null);
 
@@ -90,10 +90,7 @@ public class PasteService {
     }
 
     @Transactional
-    public void deletePaste(Paste paste, User user) {
-
-        log.debug("Deleting paste with id: {}", paste.getId());
-
+    public void deletePaste(Paste paste, User user) throws CustomAccessDeniedException {
         checkAccessRights(paste, user);
 
         repository.delete(paste);
@@ -101,10 +98,9 @@ public class PasteService {
         viewService.deleteAllViewsByPasteId(paste.getId());
 
         eventPublisher.publishEvent(new FileDeletionEvent(this, paste.getFiles()));
-
     }
 
-    public void checkAccessRights(Paste paste, User user) {
+    public void checkAccessRights(Paste paste, User user) throws CustomAccessDeniedException {
         if (!Objects.equals(paste.getUser().getId(), user.getId())) {
             throw new CustomAccessDeniedException("You do not have permission to delete this item.");
         }

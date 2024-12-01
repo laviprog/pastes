@@ -69,20 +69,4 @@ public class PasteController {
             throw new ResourceNotFoundException(String.format("Paste with id %s not found", id));
         }
     }
-
-    @DeleteMapping("/{author}/{title}")
-    public ResponseEntity<Void> deletePasteByAuthorAndTitle(@PathVariable String author,
-                                                            @PathVariable String title,
-                                                            @AuthenticationPrincipal User user) {
-        Paste paste = pasteService.getPasteByAuthorAndTitle(author, title, null);
-        if (paste != null) {
-            pasteService.deletePaste(paste, user);
-            return ResponseEntity.noContent().build();
-        } else {
-            throw new ResourceNotFoundException(String.format("Paste with author %s and title %s not found", author, title));
-        }
-    }
-
-    //public PasteResponse updatePaste(@RequestBody UpdatePasteRequest request, @AuthenticationPrincipal User user) {
-
 }

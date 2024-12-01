@@ -1,7 +1,7 @@
 package com.laviprog.pastes.configuration.security;
 
-import com.laviprog.pastes.services.auth.JwtService;
 import com.laviprog.pastes.services.UserService;
+import com.laviprog.pastes.services.auth.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

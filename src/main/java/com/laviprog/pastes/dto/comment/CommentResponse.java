@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Data
 @Schema
 public class CommentResponse {
+    private Long id;
 
     private String body;
 
@@ -17,6 +18,7 @@ public class CommentResponse {
     private LocalDateTime createdAt;
 
     public CommentResponse(Comment comment) {
+        this.id = comment.getId();
         this.body = comment.getBody();
         this.author = comment.getAuthor();
         this.createdAt = comment.getCreatedAt();

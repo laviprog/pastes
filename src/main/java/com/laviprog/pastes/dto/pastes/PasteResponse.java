@@ -13,7 +13,6 @@ import java.util.List;
 @Data
 @Schema
 public class PasteResponse {
-
     private Long id;
 
     private String title;

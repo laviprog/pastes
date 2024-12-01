@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface ViewRepository extends JpaRepository<View, Long> {
     Optional<View> findByPasteIdAndUserId(Long pasteId, Long userId);
     void deleteAllByPasteId(Long pasteId);
+
+    void deleteAllByUserId(Long userId);
 }

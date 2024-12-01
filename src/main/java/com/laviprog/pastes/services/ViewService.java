@@ -13,7 +13,6 @@ public class ViewService {
     private final ViewRepository repository;
 
     public View addView(Long pasteId, Long userId) {
-        log.debug("Add view for paste id {} user id {}", pasteId, userId);
         View view = getView(pasteId, userId);
         return view == null ? repository.save(new View(pasteId, userId)) : view;
     }
@@ -23,7 +22,10 @@ public class ViewService {
     }
 
     public void deleteAllViewsByPasteId(Long pasteId) {
-        log.debug("Deleting all views by pasteId {}", pasteId);
         repository.deleteAllByPasteId(pasteId);
+    }
+
+    public void deleteAllViewsByUserId(Long userId) {
+        repository.deleteAllByUserId(userId);
     }
 }
